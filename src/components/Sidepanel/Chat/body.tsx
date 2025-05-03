@@ -17,11 +17,39 @@ export const SidePanelBody = () => {
   const [isSourceOpen, setIsSourceOpen] = React.useState(false)
   const [source, setSource] = React.useState<any>(null)
   const { ttsEnabled } = useWebUI()
-  React.useEffect(() => {
-    if (divRef.current) {
-      divRef.current.scrollIntoView({ behavior: "smooth" })
+
+  const handlePrintMessages = () => {
+    console.log("All messages:", messages);
+    const id = Math.random().toString(36).substring(2, 10); // 生成随机 id
+    const url = `http://192.168.31.221:3200/share_api/${id}`;
+    let payload = messages.map((msg) => {
+      return {
+        role: msg.isBot ? "assistant" : "user",
+        message: msg.message
+      };
+    });
+    try {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      }).then(r => {
+        if(r.status !== 200) {
+          alert("上传数据失败")
+        } else {
+          navigator.clipboard.writeText(`http://192.168.31.221:3200/share/${id}`)
+        }
+      }).catch(e => {
+        console.error(e)
+        alert(e)
+      });
+    } catch (err) {
+      alert(`上传失败: ${err.message}`);
     }
-  })
+  }
+
   return (
     <>
       <div className="relative flex w-full flex-col items-center pt-16 pb-4">
@@ -56,7 +84,16 @@ export const SidePanelBody = () => {
           />
         ))}
         <div ref={divRef} />
+
+        {/* 新增打印按钮 */}
+        <button
+          onClick={handlePrintMessages}
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          上传消息
+        </button>
       </div>
+
       <div className="w-full pb-[157px]"></div>
 
       <MessageSourcePopup
