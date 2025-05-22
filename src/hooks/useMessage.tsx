@@ -1361,10 +1361,17 @@ export const useMessage = () => {
 
     try {
       const prompt = await getPrompt(messageType)
+      let title = ''
+      chrome.tabs.query({ windowType: 'normal' }, (tabs) => {
+        tabs.forEach((tab) => {
+          if(tab.active)
+            title = tab.title;
+        })
+      })
       let humanMessage = await humanMessageFormatter({
         content: [
           {
-            text: prompt.replace("{text}", message),
+            text: prompt.replace("{text}", message).replaceAll('{title}', title),
             type: "text"
           }
         ],
@@ -1375,7 +1382,7 @@ export const useMessage = () => {
         humanMessage = await humanMessageFormatter({
           content: [
             {
-              text: prompt.replace("{text}", message),
+              text: prompt.replace("{text}", message).replaceAll('{title}', title),
               type: "text"
             },
             {

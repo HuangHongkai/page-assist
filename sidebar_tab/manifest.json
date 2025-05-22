@@ -1,0 +1,25 @@
+{
+   "action": {
+      "default_title": "Sidebar Tab -- Click to open sidebar"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "description": "pin ChatGPT-4o Gemini Claude in side bar",
+   "host_permissions": [ "\u003Call_urls>" ],
+   "icons": {
+      "128": "icon.png",
+      "16": "icon.png",
+      "32": "icon.png",
+      "48": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoCd89HtScCI2P7mIU0xvltRAHwN9FqupoRQVqe1xmfGl2XHzNxuGBH4ZufaKieXdI55Xh1xNvSVKv8XZWuD+cWV0p5hnugQAc62un7C0v45Zba/7HjFR7zbpUg+BbChhVEpDr+Ze1j/Q7V79xtwMF0nmwW8rBsuT+sv1HnOQ7+Sj+R8Aq7s+krR1QoB+57jZl/QDFjvcb6P7BnVLeKavIxc1R9fRXxJwIK8iwxdLDbQyOeRTCJoWpAfdGsYXS87NqA/StDBzgqePOZR9j8M1/SHxGFy/lWnwi/wWXsX98urTHg/hWx2hFftQ3hOnxWhZeFu9cvXIg+3n4hh+492n0QIDAQAB",
+   "manifest_version": 3,
+   "name": "Sidebar Tab",
+   "permissions": [ "sidePanel", "declarativeNetRequest" ],
+   "side_panel": {
+      "default_path": "sidepanel/index.html"
+   },
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.8"
+}

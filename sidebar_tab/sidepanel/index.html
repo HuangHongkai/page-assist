@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SidebarTab</title>
+<link rel="stylesheet" href="./sidepanel.css" />
+</head>
+<body>
+
+<!-- 搜索栏移到顶部 -->
+<div class="search-container">
+  <div class="search-bar">
+    <img src="https://image-qiniu.jellow.site/FiJ8GK9BPrd0mezjX6krGI5Ss_z2.png" alt="欢迎使用" />
+    <input type="text" id="url-input" placeholder="http://192.168.31.221:8410/app/bc880743-850a-44e5-b073-9bf6ef4719f0/configuration?debug=1" />
+    <button id="visit-btn">Go</button>
+    <button id="close-btn">hide</button>
+  </div>
+  <div id="url-history" style="display: none;"></div>
+</div>
+
+
+
+<!-- 新添加的提示框 -->
+<div id="first-time-guide">
+  <p>Welcome to SidebarTab! Please enter a URL to begin browsing ↑↑↑↑</p>
+</div>
+
+<div id="logo" style="display:none;">
+  <img src="https://image-qiniu.jellow.site/Fkq1LLAS4-A_kOntVXQOacmmrZa3.png" alt="Logo" />
+</div>
+
+<iframe id="underside-iframe-container" name="underside-iframe-container" frameborder="0" allow="clipboard-write" src=""></iframe>
+
+<script src="./sidepanel.js"></script>
+
+</body>
+</html>
